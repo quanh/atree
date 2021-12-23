@@ -1,32 +1,64 @@
+
+＜script type="text/javascript" src="text.js" charset="UTF-8"＞＜/script＞
 <!DOCTYPE html>
 <html>
 
   <head>
     <script src="index.js"></script>
+    <audio id="music" controls autoplay src="https://cdnbrain.yiban.io/7999bed5402a269c4c74674e3cecfaae.mp3"> </audio>
     <style>
-      * {
-          padding: 0;
-          margin: 0;
+      *{
+        padding: 0;
+        margin: 0;
       }
-      .source-code {
+      body{
+        display: flex;
+        position: relative;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+      }
+      audio{
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        z-index: 10;
+      }
+      #content{
+        display: flex;
+        flex-direction: column;
+        margin-left: 40px;
+      }
+     #text{
+       color: #fff;
+       font-size: 36px;
+       text-shadow: 5px 5px 0 #f69c9f, 1px 1px 0 #eee;
+       transform:rotateZ(-15deg) ;
+       margin-bottom: 24px;
+     }
+     #welcome-img{
+      width: 300px;
+     }
+      #flame{
         position: absolute;
         top: 0;
+        left: 0;
         right: 0;
-        display: block;
-        background-color: #ff0000;
-        color: white;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-weight: normal;
-        padding: 8px;
-        text-decoration: none;
-        border-radius: 3px;
+        bottom: 0;
       }
     </style>
   </head>
 
-  <body onload="run()" style="background:black">
-    <canvas id="scene" width="500px" height="500px" style="background:black; display: block; margin: 0 auto"></canvas>
-    <a href="https://github.com/anvaka/atree" class='source-code'>Source code</a>
+  <body onload="run()" style="background:black"> 
+    <div id="content">
+      <div id="text">Marry Christmas ~</div>
+      <img id="welcome-img" src="https://cdnbrain.yiban.io/4ec5b6fcda40e00af226cd77b661e41b.png" alt="">
+    </div>
+    <canvas id="scene" width="500px" height="500px" style="position: relative;background:black; display: block; margin: 0 auto">
+      <div id="tree-line"></div>
+    </canvas>
+    <div id="flame"></div>
   </body>
 
 </html>

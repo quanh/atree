@@ -48,7 +48,7 @@ function run() {
         })];
 
   renderFrame(); // animation loop starts here
-
+  snow();
   function renderFrame() {
     requestAnimationFrame(renderFrame);
 
@@ -143,5 +143,51 @@ function run() {
   // I actually want it to be slower then 60fps
   function requestAnimationFrame(callback) {
     window.setTimeout(callback, 1000 / 24);
+  } 
+
+  
+  function snow(){
+    function Obj(){}
+   
+    const colors = ['#f69c9f', '#feeeed', '#afb4db', '#ffce7b', '#cde6c7']
+
+    Obj.prototype.draw=function(o){
+        var speed = 0;   
+        var startPosLeft = Math.ceil(Math.random()*document.documentElement.clientWidth);
+        o.style.opacity = (Math.ceil(Math.random()*3)+7)/10; 
+        o.style.left = startPosLeft + 'px';
+        const index = Math.ceil(Math.random()*10/3.0)
+        o.style.color = colors[index];
+        o.style.fontSize = 12+Math.ceil(Math.random()*20) + 'px';
+        setInterval(function(){
+            if(speed<document.documentElement.clientHeight){
+                o.style.top = speed + 'px';
+                o.style.left = startPosLeft+Math.ceil(Math.random()*12) + 'px';
+                speed += 50;
+            }
+            else{
+                // o.style.display='none';
+            }
+        },400);
+    }
+    
+    var flame=document.getElementById('flame');
+    
+    setInterval(function(){
+        var odiv=document.createElement('div'); 
+        odiv.innerHTML="✽";  
+        odiv.style.position='absolute'; 
+        flame.appendChild(odiv);
+        var obj= new Obj(); 
+        obj.draw(odiv); 
+    },50);
+  }
+
+  function playMusic(){
+    
   }
 }
+
+
+
+
